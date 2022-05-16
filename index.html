@@ -8,13 +8,60 @@
 </head>
 <body>
     <script>
+        //Allow the computer to randomly select an rps option
         function computerPlay(){
             let gameArray = ['rock','paper','scissors'];
             let randomSelection = Math.floor(Math.random() * gameArray.length);
             let computerSelection = gameArray[randomSelection];
             return computerSelection;
         }
-        console.log(computerPlay());
+         //declare computer selection
+        const computerSelection = computerPlay();
+        
+        //Run a game of rps
+        function playRound(playerSelection, computerSelection){
+            //Force lower case to make case-insensitive
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+            // switch statement to check the winner
+            switch(true) {
+                case playerSelection == 'rock' && computerSelection == 'scissors':
+                    return "Player wins!";
+                    break;
+                case playerSelection == 'rock' && computerSelection == 'paper': 
+                    return "Computer wins!";
+                    break;
+                case playerSelection == 'scissors' && computerSelection == 'rock':
+                    return "Computer wins!";
+                    break;
+                case playerSelection == 'scissors' && computerSelection == 'paper':
+                    return "Player wins!";
+                    break;
+                case playerSelection == 'paper' && computerSelection == 'rock':
+                    return "Player wins!";
+                    break;
+                case playerSelection == 'paper' && computerSelection == 'scissors':
+                    return "Computer wins!";
+                    break;
+                case playerSelection == computerSelection:
+                    return "It's a tie!";
+                    break;
+                default:
+                    return "Something went wrong!";
+                    break;
+            }
+        }
+        //Play game 5 times
+        function game(){
+            for(let i = 0; i < 5; i++){
+            let result = '';
+            const playerSelection = prompt("Enter rock, paper, or scissors");
+            result = playRound(playerSelection, computerPlay());
+            console.log(result);
+        }
+        }
+
+        game();
     </script>
 </body>
 </html>
