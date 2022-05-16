@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
     <script>
@@ -15,9 +15,7 @@
             let computerSelection = gameArray[randomSelection];
             return computerSelection;
         }
-         //declare computer selection
-        const computerSelection = computerPlay();
-        
+       
         //Run a game of rps
         function playRound(playerSelection, computerSelection){
             //Force lower case to make case-insensitive
@@ -53,14 +51,43 @@
         }
         //Play game 5 times
         function game(){
+            //Tally's need defined before the loop, otherwise they are out of scope
+            let compTally = 0;
+            let playTally = 0;
+            
             for(let i = 0; i < 5; i++){
+            //declare variables and ask for user input
             let result = '';
             const playerSelection = prompt("Enter rock, paper, or scissors");
-            result = playRound(playerSelection, computerPlay());
+            const computerSelection = computerPlay();
+            
+           
+            //Apply playRound result to result variable
+            result = playRound(playerSelection, computerSelection);
+           
+            //log results, tell player what computer rng'd
+            console.log('Player picked: ' + playerSelection + "!");
+            console.log('Computer picked: ' + computerSelection + "!");
             console.log(result);
-        }
-        }
+            //Tally up the results
+            if (result == 'Computer wins!'){
+                compTally++;
+            } else if(result == 'Player wins!'){
+                playTally++;
+            }
 
+        }//end of for loop
+
+        //Figure out tally result, then display it
+        if(compTally > playTally){
+            console.log('Computer takes the set!');
+        }else if (compTally < playTally){
+            console.log('Player takes the set!');
+        }else{
+            console.log('Set is a tie!');
+        }
+        }//end of game function
+        //call game
         game();
     </script>
 </body>
