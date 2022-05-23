@@ -5,7 +5,6 @@ h1, h2{
 body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: rgb(25, 25, 25);
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -34,6 +33,22 @@ button{
 .score{
     color: white;
     font-size: 35px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
 }
+
+.scoreLeft{
+    text-align: center;
+}
+
+.scoreRight{
+    text-align: center;
+}
+
+.winner{
+    color: white;
+    font-size: 100px;
+}
+
