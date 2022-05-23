@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <div class="top">
+        <h1>Rock Paper Scissors</h1>
+        <h2>First To Five</h2>
+    </div>
+    
+    <div class="button-container">
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
+    </div>  
+    
+    <div class="score">
+        <div class="scoreLeft"> 
+            <p>Player Score</p>
+            <p>0</p>
+        </div>   
+        <div class="scoreRight">
+            <p>Computer Score</p>
+            <p>0</p>
+        </div>
+    </div>
     <script>
+
         //Allow the computer to randomly select an rps option
         function computerPlay(){
             let gameArray = ['rock','paper','scissors'];
@@ -15,7 +38,7 @@
             let computerSelection = gameArray[randomSelection];
             return computerSelection;
         }
-       
+
         //Run a game of rps
         function playRound(playerSelection, computerSelection){
             //Force lower case to make case-insensitive
@@ -50,16 +73,15 @@
             }
         }
         //Play game 5 times
+        /*
         function game(){
             //Tally's need defined before the loop, otherwise they are out of scope
-            let compTally = 0;
-            let playTally = 0;
             
             for(let i = 0; i < 5; i++){
             //declare variables and ask for user input
             let result = '';
-            const playerSelection = prompt("Enter rock, paper, or scissors");
-            const computerSelection = computerPlay();
+            //const playerSelection = prompt("Enter rock, paper, or scissors");
+            
             
            
             //Apply playRound result to result variable
@@ -76,7 +98,7 @@
                 playTally++;
             }
 
-        }//end of for loop
+        //}//end of for loop
 
         //Figure out tally result, then display it
         if(compTally > playTally){
@@ -87,8 +109,59 @@
             console.log('Set is a tie!');
         }
         }//end of game function
+
         //call game
-        game();
+        game();*/
+        
+            let compTally = 0;
+            let playTally = 0;
+            let result = '';
+            let computerSelection = computerPlay();
+            
+            const rockButton = document.querySelector('.rock');
+            const paperButton = document.querySelector('.paper');
+            const scissorsButton = document.querySelector('.scissors');
+
+            rockButton.addEventListener('click', () => {
+            computerSelection = computerPlay();
+            result = playRound('rock', computerSelection);
+            
+            if (result == 'Player wins!'){
+                playTally ++;
+            }else if(result == 'Computer wins!'){
+                compTally ++;
+            }else{
+                //
+            }
+        });
+
+        paperButton.addEventListener('click', () => {
+            computerSelection = computerPlay();
+            result = playRound('rock', computerSelection);
+            
+            if (result == 'Player wins!'){
+                playTally ++;
+            }else if(result == 'Computer wins!'){
+                compTally ++;
+            }else{
+                //
+            }
+        });
+
+        scissorsButton.addEventListener('click', () => {
+            computerSelection = computerPlay();
+            result = playRound('rock', computerSelection);
+            
+            if (result == 'Player wins!'){
+                playTally ++;
+            }else if(result == 'Computer wins!'){
+                compTally ++;
+            }else{
+                //
+            }
+        });
+
+
     </script>
 </body>
 </html>
